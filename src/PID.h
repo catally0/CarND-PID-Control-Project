@@ -31,6 +31,16 @@ class PID {
    */
   double TotalError();
 
+  double MSE();
+
+  void PrintK();
+
+  /**
+   * PID Coefficients
+   */ 
+  double K[3];
+
+
  private:
   /**
    * PID Errors
@@ -39,12 +49,14 @@ class PID {
   double i_error;
   double d_error;
 
-  /**
-   * PID Coefficients
-   */ 
-  double Kp;
-  double Ki;
-  double Kd;
+
+  
+  
+  double prev_cte;
+  double int_cte;
+  bool initialized;
+  double sum_of_squared_errors;
+  int steps;
 };
 
 #endif  // PID_H
